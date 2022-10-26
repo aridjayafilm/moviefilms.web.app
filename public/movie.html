@@ -1,0 +1,530 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Movies Streaming Service">
+  <meta name="author" content="Abhijeet Singh">
+  <link rel="icon" href="static/images/favicon.jpg">
+
+  <title>Movie Stream</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="static/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="static/css/blog.css" rel="stylesheet">
+  <link href="static/css/carousel.css" rel="stylesheet">
+  <link href="static/css/album.css" rel="stylesheet">
+
+  <style id="style-1-cropbar-clipper">
+    .navbar-nav li a {
+      cursor: pointer;
+    }
+
+    .popGenre {
+      color: rgb(0, 0, 0);
+      cursor: pointer;
+      word-wrap: normal;
+    }
+
+    .popGenre:hover {
+      color: #007bff;
+    }
+
+    #container {
+      margin-top: 30px;
+    }
+
+    .card-img-top {
+      height: 485px;
+      width: 100%;
+    }
+
+    .col-md-9 .row {
+      margin-left: 0px;
+      margin-right: 0px;
+    }
+
+    .card-body.align-items-start,
+    .card-body.align-items-end {
+      align-items: center !important;
+    }
+
+    @media (min-width: 576px) {}
+
+    @media (min-width: 768px) {}
+
+    @media (min-width: 992px) {
+      .card-img-top {
+        height: 330px;
+        width: 100%;
+      }
+
+      .card-body.align-items-start {
+        align-items: flex-start !important;
+      }
+
+      .card-body.align-items-end {
+        align-items: flex-end !important;
+      }
+    }
+
+    @media (min-width: 1200px) {}
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="index.html?genre=NEW">Movie Stream</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html?genre=NEW">HOME <span class="sr-only">(current)</span></a>
+          </li>
+          <li id="nav-genre" class="nav-item">
+            <a id="genrePopover" class="nav-link" data-container="body" data-toggle="popover" title="Genres"
+              data-html="true" data-placement="bottom"
+              data-content="<div class='row'><div class='col-md-6'><a class='nav-link popGenre' href='index.html?genre=ACTION'>Action</a><a class='nav-link popGenre' href='index.html?genre=ADVENTURE'>Adventure</a><a class='nav-link popGenre' href='index.html?genre=ANIMATION'>Animation</a><a class='nav-link popGenre' href='index.html?genre=BIOGRAPHY'>Biography</a><a class='nav-link popGenre' href='index.html?genre=COMEDY'>Comedy</a><a class='nav-link popGenre' href='index.html?genre=CRIME'>Crime</a><a class='nav-link popGenre' href='index.html?genre=DRAMA'>Drama</a><a class='nav-link popGenre' href='index.html?genre=FAMILY'>Family</a><a class='nav-link popGenre' href='index.html?genre=FANTASY'>Fantasy</a></div><div class='col-md-6'><a class='nav-link popGenre' href='index.html?genre=HISTORY'>History</a><a class='nav-link popGenre' href='index.html?genre=HORROR'>Horror</a><a class='nav-link popGenre' href='index.html?genre=MYSTERY'>Mystery</a><a class='nav-link popGenre' href='index.html?genre=MUSIC'>Music</a><a class='nav-link popGenre' href='index.html?genre=ROMANCE'>Romance</a><a class='nav-link popGenre' href='index.html?genre=THRILLER'>Thriller</a><a class='nav-link popGenre' href='index.html?genre=SCI-FI'>Sci-Fi</a><a class='nav-link popGenre' href='index.html?genre=SPORT'>Sport</a><a class='nav-link popGenre' href='index.html?genre=WESTERN'>Western</a></div></div>">GENRE</a>
+          </li>
+
+          <li id="nav-favorite" class="nav-item">
+            <a class="nav-link" href="index.html?genre=FAVORITE">FAVORITE</a>
+          </li>
+          <li class="nav-item" style="cursor:default">
+            <a class="nav-link" style="cursor:default">|</a>
+          </li>
+          <li id="nav-action" class="nav-item">
+            <a class="nav-link" href='index.html?genre=ACTION'>ACTION</a>
+          </li>
+          <li id="nav-adventure" class="nav-item">
+            <a class="nav-link" href='index.html?genre=ADVENTURE'>ADVENTURE</a>
+          </li>
+          <li id="nav-animation" class="nav-item">
+            <a class="nav-link" href='index.html?genre=ANIMATION'>ANIMATION</a>
+          </li>
+          <li id="nav-comedy" class="nav-item">
+            <a class="nav-link" href='index.html?genre=COMEDY'>COMEDY</a>
+          </li>
+          <li id="nav-drama" class="nav-item">
+            <a class="nav-link" href='index.html?genre=DRAMA'>DRAMA</a>
+          </li>
+          <li id="nav-romance" class="nav-item">
+            <a class="nav-link" href='index.html?genre=ROMANCE'>ROMANCE</a>
+          </li>
+          <li id="nav-horror" class="nav-item">
+            <a class="nav-link" href='index.html?genre=HORROR'>HORROR</a>
+          </li>
+          <li id="nav-sci-fi" class="nav-item">
+            <a class="nav-link" href='index.html?genre=SCI-FI'>SCI-FI</a>
+          </li>
+
+        </ul>
+        <img src="static/images/ic_search_white.png" onclick="showSearchModal()" style="cursor:pointer">
+      </div>
+    </nav>
+  </header>
+
+  <!--Movie Content (2 Card Displays)-->
+  <div id="container" class="container">
+  </div>
+  <div id="videoContainer" class="container">
+  </div>
+  <div class="album" style="background-color:#fff">
+    <div id="seriesContainer" class="container">
+    </div>
+  </div>
+
+  <footer class="blog-footer">
+    <p>
+      © 2020, Movie Stream
+    </p>
+  </footer>
+
+  <!--Search Modal-->
+  <div id="searchModal" class="modal fade" role="dialog">
+    <div class="modal-dialog" role="document">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title" style="font-size:18px;font-family:Andalus;font-face:plain;color:#d9534f">Search Movies
+          </h1>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <input id="searchText" class="form-control mr-sm-2" placeholder="Search Movies" onkeyup="searchMovies(event)">
+          <div class="container">
+            <ul id="searchList" style="list-style:none;padding:5px;text-decoration:none;"></ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" onclick="load_gallery()" data-dismiss="modal">Load
+              Movies</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPTS-->
+  <script src="static/js/jquery-3.2.1.slim.min.js"></script>
+  <script src="static/js/popper.min.js"></script>
+  <script src="static/js/bootstrap.min.js"></script>
+  <script src="static/js/content.js"></script>
+  <script>
+    let fullscreen = false, playing = false;
+    let path = "G:/";  //INTERNAL PATH
+    let externalPath = "J:/Backup/Entertainments/Movies/Hollywood/"; //EXTERNAL PATH
+    let showRestricted = false;
+    $(document).ready(function () {
+      let uri = decodeURI(window.location.href);
+      let movieTitle = uri.substring(uri.indexOf("?movie=") + 7);
+      document.title = movieTitle;
+      loadMovie(movieTitle);
+      $('[data-toggle="popover"]').popover();
+      $('body').click(function (e) {
+        if (e.target.id != "genrePopover") {
+          $('[data-toggle="popover"]').popover('hide');
+        }
+      });
+    });
+
+    function loadMovie(movieTitle) {
+      let mid, movie = undefined;
+      let title = movieTitle.substring(0, movieTitle.lastIndexOf("(") - 1);
+      let year = movieTitle.substring(movieTitle.lastIndexOf("(") + 1, movieTitle.lastIndexOf(")"));
+
+      for (mid in CONTENT["movies"]) {
+        if (title == CONTENT["movies"][mid]["title"] && year == CONTENT["movies"][mid]["year"]) {
+          if(isRestricted(mid) && !showRestricted){
+            return;
+          }
+          movie = CONTENT["movies"][mid];
+          break;
+        }
+      }
+      if (movie == undefined) {
+        return;
+      }
+      let container_content =
+        '<div class="row"> \
+        <div class="col-md-3"> \
+          <div class="card mb-4 box-shadow"> \
+            <img class="card-img-top" src="static/images/posters/' + movie.title + ' (' + movie.year + ').jpg" data-holder-rendered="true"> \
+            <div class="card-body"> \
+              <div class="d-flex justify-content-between align-items-center"> \
+                <div class="btn-group">';
+
+      let favoriteClass = "btn-outline-secondary";
+      if (isFavorite(mid)) {
+        favoriteClass = "btn-outline-danger";
+      }
+      container_content += '<button type="button" class="btn btn-sm ' + favoriteClass + '" disabled>Favorite</button>';
+
+      let ratingClass = "btn-outline-info";
+      if (movie.rated == "R") {
+        ratingClass = "btn-outline-danger";
+      } else if (movie.rated == "M") {
+        ratingClass = "btn-outline-warning";
+      }
+      container_content += '<button type="button" class="btn btn-sm ' + ratingClass + '" disabled>' + movie.rated + '</button></div>';
+
+      let imdbClass = "text-muted";
+      if (movie.imdb >= 6.5) {
+        imdbClass = "text-success";
+      } else if (movie.imdb < 5) {
+        imdbClass = "text-danger";
+      }
+      container_content += '<small class="text-muted">IMDB: \
+        <strong class="' + imdbClass + '">' + movie.imdb + '</strong> \
+        </small> \
+        </div> \
+        </div> \
+        </div> \
+        </div>';
+
+      container_content += '<div class="col-md-9"> \
+        <div class="row"> \
+          <div class="card flex-md-row mb-4 box-shadow h-md-280 col-md-12"> \
+            <div class="card-body d-flex flex-column align-items-start"> \
+              <h3 class="mb-0"> \
+                <a class="text-dark" >' + movie.title + ' (' + movie.year + ')</a> \
+              </h3> \
+              <div class="mb-1 text-muted" style="margin-top:10px"> \
+                <p class="card-text mb-auto"> \
+                  <b class="text-secondary">Cast:</b> ' + movie.cast + ' \
+                </p> \
+                <p class="card-text mb-auto"> \
+                  <b class="text-secondary">Plot:</b> ' + movie.plot + ' \
+                </p> \
+              </div> \
+            </div> \
+          </div> \
+        </div> \
+        <div class="row"> \
+          <div class="card flex-md-row mb-4 box-shadow h-md-280 col-md-12"> \
+            <div class="card-body d-flex flex-column align-items-start col-md-9"> \
+              <div class="btn-group" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Genre">';
+
+      let genreClass = "";
+      for (let genre of movie.genre.split(", ")) {
+        switch (genre) {
+          case "Comedy":
+            genreClass = "btn-outline-success";
+            break;
+          case "Horror":
+          case "Thriller":
+          case "Crime":
+            genreClass = "btn-outline-danger";
+            break;
+          case "Biography":
+          case "Drama":
+            genreClass = "btn-outline-info";
+            break;
+          case "Romance":
+            genreClass = "btn-outline-warning";
+            break;
+          case "Animation":
+            genreClass = "btn-outline-primary";
+            break;
+          default:
+            genreClass = "btn-outline-secondary";
+            break;
+        }
+        container_content += '<button type="button" class="btn btn-sm ' + genreClass + '" onclick=loadGenrePage("' + genre + '")>' + genre + '</button>';
+      }
+
+      container_content += '</div></div> \
+      <div class="card-body d-flex flex-column align-items-end col-md-3"> \
+        <div class="btn-group"> \
+          <button type="button" id="availableBtn" class="btn btn-sm btn-outline-info" style="cursor:default" data-toggle="popover" data-trigger="hover" data-placement="left" data-content="Checking Availability">Loading...</button> \
+        </div> \
+      </div> \
+      </div> \
+      </div> \
+      <div class="row"> \
+        <div class="card flex-md-row mb-4 box-shadow h-md-280 col-md-12"> \
+          <div class="card-body d-flex flex-column align-items-start col-md-9"> \
+            <div class="btn-group"> \
+              <button type="button" class="btn btn-sm btn-outline-warning" disabled style="cursor:default">Duration: ' + movie.duration + ' \
+              </button> \
+            </div> \
+          </div> \
+          <div class="card-body d-flex flex-column align-items-end col-md-3"> \
+            <div class="btn-group" data-toggle="popover" data-trigger="hover" data-placement="left" data-content="Available in HD">';
+
+      if (movie.hd == "Y") {
+        container_content += '<button type="button" class="btn btn-sm btn-outline-primary" style="cursor:default;font-style:italic">HD</button>';
+      }
+      container_content += '</div></div></div></div></div></div>';
+
+      document.getElementById("container").innerHTML = container_content;
+
+      if (movie.local == "N") {
+        path = externalPath;
+      }
+      document.getElementById("videoContainer").innerHTML =
+        '<video id="video1" disabled width="100%" height="0px" style="background-color:#000;cursor:none;margin-bottom:20px" onclick="play()" ondblclick="toggleFullScreen()" onmousemove="showCursor()"> \
+          <source id="video_src" src="" type="video/mp4"> \
+        </video>';
+      document.getElementById("video1").poster = "";
+      document.getElementById("video_src").src = path + movie.path;
+      document.getElementById("video1").load();
+
+      setTimeout(function () { setVideoContent(movie); }, 1000);
+      showSeries(mid);
+    }
+
+    function setVideoContent(movie) {
+      let d = document.getElementById("video1").duration;
+      if (d > 0) {
+        document.getElementById("video1").style.height = "589px";
+        if ($(window).width() < 576) {
+          document.getElementById("video1").style.height = "310px";
+        }
+        document.getElementById("video1").controls = true;
+        $("#availableBtn").removeClass('btn-outline-info');
+        $("#availableBtn").html('Available');
+        $("#availableBtn").addClass('btn-outline-success');
+
+        if (movie.local == "N") {
+          $('#availableBtn').attr('data-content', 'Playing from External Drive');
+        } else {
+          $('#availableBtn').attr('data-content', 'Available on Local System');
+        }
+      } else {
+        document.getElementById("videoContainer").innerHTML = '';
+        $("#availableBtn").removeClass('btn-outline-info');
+        $("#availableBtn").html('Unavailable');
+        $("#availableBtn").addClass('btn-outline-danger');
+
+        if (movie.path != "n/a" && movie.local == "N") {
+          $('#availableBtn').attr('data-content', 'Stored on External Drive');
+        } else {
+          $("#availableBtn").html('Missing');
+          $('#availableBtn').attr('data-content', 'Not Available in any System');
+        }
+      }
+    }
+
+    function loadGenrePage(genre) {
+      location.href = "index.html?genre=" + genre.toUpperCase();
+    }
+
+    function isFavorite(mid) {
+      if (CONTENT["favorites"].indexOf(mid) > -1) {
+        return true;
+      }
+      return false;
+    }
+
+    function isRestricted(mid) {
+      if (CONTENT["restricted"].indexOf(mid) > -1) {
+        return true;
+      }
+      return false;
+    }
+
+    function play() {
+      let video = document.getElementById("video1");
+      if (video.paused) {
+        $(video).trigger('play');
+        // console.log("play");
+        playing = true;
+      } else {
+        $(video).trigger('pause');
+        // console.log("pause");
+        playing = false;
+      }
+    }
+
+    function toggleFullScreen() {
+      let video = document.getElementById("video1");
+      if (!fullscreen) {
+        video.webkitRequestFullscreen();
+        fullscreen = true;
+      } else if (fullscreen) {
+        video.webkitExitFullscreen();
+        fullscreen = false;
+      }
+    }
+
+    function showCursor() {
+      document.getElementById("video1").style.cursor = "default";
+      setTimeout(function () { document.getElementById("video1").style.cursor = "none"; }, 3000);
+    }
+
+    function showSeries(mid) {
+      if (mid in CONTENT["series"]) {
+        let name = CONTENT["series"][mid]["series"];
+        let mids = [];
+        let s;
+        for (s in CONTENT["series"]) {
+          if (name == CONTENT["series"][s]["series"] && s != mid) {
+            if(isRestricted(s) && !showRestricted){
+              continue;
+            }
+            mids.push(s);
+          }
+        }
+        if (mids.length > 0) {
+          mids.sort((a, b) => {
+            if (CONTENT["movies"][a]["year"] > CONTENT["movies"][b]["year"]) {
+              return -1;
+            } else if (CONTENT["movies"][a]["year"] < CONTENT["movies"][b]["year"]) {
+              return 1;
+            } else {
+              if (CONTENT["movies"][a]["imdb"] > CONTENT["movies"][b]["imdb"]) {
+                return -1;
+              } else if (CONTENT["movies"][a]["imdb"] < CONTENT["movies"][b]["imdb"]) {
+                return 1;
+              } else {
+                return 0;
+              }
+            }
+          }
+          );
+          seriesContent(name, mids);
+        }
+      }
+    }
+
+    function seriesContent(name, mids) {
+
+      let container_content =
+        '<div class="jumbotron p-3 p-md-5 text-white rounded" style="background:url(static/images/yellow-band.jpg);margin-bottom:30px"> \
+          <div class="col-md-6 px-0"> \
+            <h1 class="display-4 font-italic">'+ name + '</h1> \
+            <h5 class="">COLLECTION</h5> \
+          </div> \
+        </div>';
+
+      let i = 0;
+      let movie, favoriteClass, ratingClass, imdbClass;
+      let mid;
+      for (mid of mids) {
+        movie = CONTENT["movies"][mid];
+        if (i % 4 == 0) {
+          container_content += '<div class="row">';
+        }
+
+        container_content +=
+          '<div class="col-md-3"> \
+                <div class="card mb-4 box-shadow"> \
+                  <a target="blank" href="movie.html?movie=' + movie.title + ' (' + movie.year + ')"> \
+                    <img class="card-img-top" src="static/images/posters/' + movie.title + ' (' + movie.year + ').jpg" data-holder-rendered="true" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="' + movie.title + ' (' + movie.year + ')"> \
+                  </a> \
+                <div class="card-body"> \
+                  <p class="card-text">Year: ' + movie.year + '<br/>Genre: ' + movie.genre + '<br/><strong class="text-muted">Cast:</strong> ' + movie.cast + ' \
+                  </p> \
+                  <div class="d-flex justify-content-between align-items-center"> \
+                    <div class="btn-group">';
+
+        favoriteClass = "btn-outline-secondary";
+        if (isFavorite(mid)) {
+          favoriteClass = "btn-outline-danger";
+        }
+        container_content += '<button type="button" class="btn btn-sm ' + favoriteClass + '" disabled>Favorite</button>';
+
+        ratingClass = "btn-outline-info";
+        if (movie.rated == "R") {
+          ratingClass = "btn-outline-danger";
+        } else if (movie.rated == "M") {
+          ratingClass = "btn-outline-warning";
+        }
+        container_content += '<button type="button" class="btn btn-sm ' + ratingClass + '" disabled>' + movie.rated + '</button></div>';
+
+        imdbClass = "text-muted";
+        if (movie.imdb >= 6.5) {
+          imdbClass = "text-success";
+        } else if (movie.imdb < 5) {
+          imdbClass = "text-danger";
+        }
+        container_content +=
+          '<small class="text-muted">IMDB: <strong class="' + imdbClass + '">' + movie.imdb + '</strong></small> \
+              </div></div></div></div>';
+
+        if (i % 4 == 3) {
+          container_content += '</div>';
+        }
+        i += 1;
+      }
+      if (i % 4 !== 0) {
+        container_content += '</div>';
+      }
+
+      document.getElementById("seriesContainer").innerHTML = container_content;
+    }
+	//https://preview.themeforest.net/item/vodi-video-wordpress-theme-for-movies-tv-shows/full_screen_preview/23738703
+
+  </script>
+
+</body>
+
+</html>
